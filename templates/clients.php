@@ -2,7 +2,7 @@
 include '../src/ClientController.php';
 
 $action = new ClientController();
-$invoices = $action->showAllClient();
+$clients = $action->showAllClient();
 ?>
 
 <!DOCTYPE html>
@@ -88,14 +88,14 @@ $invoices = $action->showAllClient();
                 </thead>
                 <tbody>
 
-                <?php foreach ($invoices as $row) { ?>
+                <?php foreach ($clients as $row) { ?>
                     <tr>
                         <td><?= $row['name']; ?></td>
                         <td><?= $row['email']; ?></td>
                         <td><?= $row['date']; ?></td>
 
                         <td>
-                            <a href="#" class="badge badge-primary p-2">Details</a> |
+
                             <a href="delete.php?action=clients&id=<?= $row['id']; ?>" class="badge badge-danger p-2">Delete</a>
                             <a href="edit_client.php?id=<?= $row['id']; ?>" class="badge badge-success p-2" >Edit</a>
                         </td>

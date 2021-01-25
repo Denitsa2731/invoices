@@ -27,7 +27,7 @@ $invoice = $actions->getInvoiceById($_GET['id']);
 
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" href="../publicindex.php">Invoice System</a>
+    <a class="navbar-brand" href="../public/index.php">Invoice System</a>
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -62,6 +62,15 @@ $invoice = $actions->getInvoiceById($_GET['id']);
         </div>
         <div class="form-group">
             <input type="date" name="date" class="form-control" placeholder="Въведете дата" value="<?= $invoice['date']; ?>"> <!--required-->
+        </div>
+        <div class="form-group">
+            <input type="email" name="email" class="form-control" placeholder="Въведете email" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="address" class="form-control" placeholder="Въведете адрес" required>
+        </div>
+        <div class="form-group">
+            <input type="date" name="date" class="form-control" placeholder="Въведете дата на създаване" required>
         </div>
         <div class="form-group">
             <input type="submit" name="update" class="btn btn-primary btn-block" value="Update" >

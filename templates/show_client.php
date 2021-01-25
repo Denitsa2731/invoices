@@ -78,7 +78,7 @@ $invoices = $action->showAllClient();
                         <td><?= $row['number']; ?></td>
                         <td><?= $row['date']; ?></td>
                         <td>
-                            <a href="#" class="badge badge-primary p-2">Details</a> |
+
                             <a href="delete.php" class="badge badge-danger p-2" >Delete</a> |
                             <a href="#" class="badge badge-success p-2" >Edit</a>
                         </td>

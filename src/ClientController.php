@@ -18,11 +18,11 @@ class ClientController extends Entity
 
     public function showAllClient()
     {
-        $invoices = [];
+        $clients = [];
         $stmt = $this->stm->query("SELECT * FROM invoices.client ORDER BY id DESC");
 
         while ($row = $stmt->fetch()) {
-            array_push($invoices, array(
+            array_push($clients, array(
                 'id' => $row['id'],
                 'name' => $row['client_name'],
                 'email' => $row['client_email'],
@@ -30,7 +30,7 @@ class ClientController extends Entity
             ));
         }
 
-        return $invoices;
+        return $clients;
     }
     public function getClientById(int $id)
     {

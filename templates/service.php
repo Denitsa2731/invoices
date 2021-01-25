@@ -89,7 +89,7 @@ $invoices = $action->showAllServices();
                         <td><?= $row['creation_date']; ?></td>
 
                         <td>
-                            <a href="#" class="badge badge-primary p-2">Details</a> |
+
                             <a href="delete.php?action=service&id=<?= $row['id']; ?>" class="badge badge-danger p-2">Delete</a>
 <!--                            <a href="ServiceController.php?delete=--><?//= $row['id']; ?><!--" class="badge badge-danger p-2">Delete</a>-->
                             <a href="edit.php?id=<?= $row['id']; ?>" class="badge badge-success p-2" >Edit</a>

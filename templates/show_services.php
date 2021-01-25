@@ -79,7 +79,7 @@ $invoices = $action->showAllServices();
                         <td><?= $row['date']; ?></td>
 
                         <td>
-                            <a href="#" class="badge badge-primary p-2">Details</a> |
+
                             <a href="#" class="badge badge-danger p-2" >Delete</a> |
                             <a href="#" class="badge badge-success p-2" >Edit</a>
                         </td>

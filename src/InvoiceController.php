@@ -21,10 +21,10 @@ class InvoiceController extends Entity {
         return $clientNames;
     }
 
-    public function addInvoice($client_name, $number, $date)
+    public function addInvoice($client_name, $number, $date, $client_email, $client_address, $creation_date)
     {
-        $stmt = $this->stm->prepare("INSERT INTO invoices.invoice(client_name, date, number) VALUES (?, ?, ?)");
-        return $stmt->execute([$client_name, $date, $number]);
+        $stmt = $this->stm->prepare("INSERT INTO invoices.invoice(client_name, date, number, client_email, client_address, creation_date) VALUES (?, ?, ?, ?, ?, ?)");
+        return $stmt->execute([$client_name, $date, $number, $client_email, $client_address, $creation_date]);
     }
 
     public function showAllInvoices()
@@ -38,6 +38,9 @@ class InvoiceController extends Entity {
                 'name' => $row['client_name'],
                 'date' => $row['date'],
                 'number' => $row['number'],
+                'client_email' => $row['client_email'],
+                'client_address' => $row['client_address'],
+                'date' => $row ['creation_date'],
             ));
         }
 
@@ -53,9 +56,9 @@ class InvoiceController extends Entity {
 
     public function updateInvoice(array $data)
     {
-        $stmt = $this->stm->prepare("UPDATE invoices.invoice SET client_name=?, number=?, date=? WHERE id=?");
+        $stmt = $this->stm->prepare("UPDATE invoices.invoice SET client_name=?, number=?, date=? client_email=?, client_address=?, creation_date=? WHERE id=?");
 
-        return $stmt->execute([$data['name'], $data['number'], $data['creation_date'], $data['id']]);
+        return $stmt->execute([$data['name'], $data['number'], $data['creation_date'], $data['id'], $data['client_email'], $data['client_address'], $data['creation_date']]);
     }
 
 
@@ -72,9 +75,12 @@ if (isset($_POST['submit'])) {
     $client_name = $_POST['name'];
     $number = $_POST['number'];
     $date = $_POST['date'];
+    $client_email = $_POST['email'];
+    $client_address = $_POST['address'];
+    $creation_date = $_POST['date'];
 
     $actions = new InvoiceController();
-    $res = $actions->addInvoice($client_name, $number, $date);
+    $res = $actions->addInvoice($client_name, $number, $date, $client_email, $client_address, $creation_date);
 
     if ($res) {
         echo "New record created successfully.";
@@ -88,6 +94,9 @@ if (isset($_POST['update'])) {
     $data['id'] = $_POST['id'];
     $data['name'] = $_POST['name'];
     $data['number'] = $_POST['number'];
+    $data['date'] = $_POST['date'];
+    $data['client_email'] = $_POST['email'];
+    $data['client_address'] = $_POST['address'];
     $data['creation_date'] = $_POST['date'];
 
     $actions = new InvoiceController();

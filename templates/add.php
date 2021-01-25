@@ -73,6 +73,15 @@ $clientNames = $action->getAllClientNames();
                     <input type="date" name="date" class="form-control" placeholder="Въведете дата на фактурата" required>
                 </div>
                 <div class="form-group">
+                    <input type="email" name="email" class="form-control" placeholder="Въведете email" required>
+                </div>
+                    <div class="form-group">
+                        <input type="text" name="address" class="form-control" placeholder="Въведете адрес" required>
+                    </div>
+                        <div class="form-group">
+                            <input type="date" name="date" class="form-control" placeholder="Въведете дата на създаване" required>
+                        </div>
+                <div class="form-group">
                     <input type="submit" name="submit" class="btn btn-primary btn-block" value="Submit" >
                 </div>
             </form>
@@ -84,7 +93,10 @@ $clientNames = $action->getAllClientNames();
                     <td>Name</td>
                     <td>Number</td>
                     <td>Date</td>
-                    <td>Actions</td>
+                    <td>Email</td>
+                    <td>Address</td>
+                    <td>Date</td>
+                    <td>Action</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -94,9 +106,13 @@ $clientNames = $action->getAllClientNames();
                         <td><?= $row['name']; ?></td>
                         <td><?= $row['number']; ?></td>
                         <td><?= $row['date']; ?></td>
+                        <td><?= $row['client_email']; ?></td>
+                        <td><?= $row['client_address']; ?></td>
+                        <td><?= $row['date']; ?></td>
+
 
                         <td>
-                            <a href="#" class="badge badge-primary p-2">Details</a> |
+
                             <a href="delete.php?action=invoices&id=<?= $row['id']; ?>" class="badge badge-danger p-2">Delete</a>
 <!--                            <a href="InvoiceController.php?delete=--><?//= $row['id']; ?><!--" class="badge badge-danger p-2">Delete</a>-->
                             <a href="edit_invoice.php?id=<?= $row['id']; ?>" class="badge badge-success p-2" >Edit</a>
